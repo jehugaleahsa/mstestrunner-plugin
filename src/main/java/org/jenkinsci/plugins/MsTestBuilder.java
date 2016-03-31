@@ -204,15 +204,15 @@ public class MsTestBuilder extends Builder {
 
             if (testFile != null) {
             	File tcFile = new File(testFile);
-				if (tcFile.isAbsolute()) {
-					if (tcFile.isFile() && tcFile.exists()) {
-						testContainers.add(testFile);
-					}
+		if (tcFile.isAbsolute()) {
+			if (tcFile.isFile() && tcFile.exists()) {
+				testContainers.add(testFile);
+			}
             	} else {
-					for (FilePath tcFilePath : workspace.list(testFile)) {
-						// TODO make path relative to workspace to reduce length of command line (see windows max size)
-	            		testContainers.add(tcFilePath.getRemote());
-					}
+			for (FilePath tcFilePath : workspace.list(testFile)) {
+				// TODO make path relative to workspace to reduce length of command line (see windows max size)
+				testContainers.add(tcFilePath.getRemote());
+			}
             	}
             }
         }
@@ -223,7 +223,7 @@ public class MsTestBuilder extends Builder {
         }
 
         for (String testContainer : testContainers) {
-        	args.add("/testcontainer:" + testContainer);
+        	args.add("/testcontainer:" + "\"" + testContainer + "\"");
         }
 
         try {
