@@ -180,7 +180,7 @@ public class MsTestBuilder extends Builder {
         if (categories != null) {
         	// If filter consists of a single category such as /category:group1, do not have to enclose the filter in quotation marks.
         	// However, if filter references more than one category such as /category:"group1&group2" then the filter has to be enclosed in quotation marks.
-        	boolean quotationMarks = categories.contains("&") || categories.contains("!") || categories.contains("|");
+        	boolean quotationMarks = categories.contains("&") || categories.contains("!") || categories.contains("|") || categories.contains(" ");
        		args.add("/category:" + (quotationMarks ? "\"" : "") + categories + (quotationMarks ? "\"" : ""));
         }
 
